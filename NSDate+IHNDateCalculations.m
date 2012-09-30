@@ -8,6 +8,8 @@
 #endif
 
 @implementation NSDate (IHNDateCalculations)
+
+#pragma mark - Before
 - (NSDate *) monthsAgo:(NSInteger)months
 {
     NSParameterAssert(months >= 0);
@@ -34,5 +36,35 @@
 - (NSDate *) dayAgo
 {
     return [self daysAgo:1];
+}
+
+
+#pragma mark - After
+- (NSDate *) monthsAfter:(NSInteger)months
+{
+    NSParameterAssert(months >= 0);
+    
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+	[comps setMonth:months];
+	return [[NSCalendar currentCalendar] dateByAddingComponents:comps toDate:self options:0];
+}
+
+- (NSDate *) monthAfter
+{
+    return [self monthsAfter:1];
+}
+
+- (NSDate *) daysAfter:(NSInteger)days
+{
+    NSParameterAssert(days >= 0);
+    
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+	[comps setDay:days];
+	return [[NSCalendar currentCalendar] dateByAddingComponents:comps toDate:self options:0];
+}
+
+- (NSDate *) dayAfter
+{
+    return [self daysAfter:1];
 }
 @end

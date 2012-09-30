@@ -112,4 +112,58 @@
     STAssertTrue([self date:dayAgo and:arbitraryFutureDate differByYears:0 months:0
                        days:1 hours:0 minutes:0 seconds:0], @"");
 }
+
+- (void) testMonthsAfter
+{
+    NSDate *monthsAfter = [arbitraryPastDate monthsAfter:2];
+    STAssertTrue([self date:monthsAfter and:arbitraryPastDate differByYears:0 months:-2
+                       days:0 hours:0 minutes:0 seconds:0], @"");
+    monthsAfter = [now monthsAfter:8];
+    STAssertTrue([self date:monthsAfter and:now differByYears:0 months:-8
+                       days:0 hours:0 minutes:0 seconds:0], @"");
+    monthsAfter = [arbitraryFutureDate monthsAfter:0];
+    STAssertTrue([self date:monthsAfter and:arbitraryFutureDate differByYears:0 months:0
+                       days:0 hours:0 minutes:0 seconds:0], @"");
+    STAssertThrows([now monthsAfter:-1], @"");
+}
+
+- (void) testMonthAfter
+{
+    NSDate *monthAfter = [arbitraryPastDate monthAfter];
+    STAssertTrue([self date:monthAfter and:arbitraryPastDate differByYears:0 months:-1
+                       days:0 hours:0 minutes:0 seconds:0], @"");
+    monthAfter = [now monthAfter];
+    STAssertTrue([self date:monthAfter and:now differByYears:0 months:-1
+                       days:0 hours:0 minutes:0 seconds:0], @"");
+    monthAfter = [arbitraryFutureDate monthAfter];
+    STAssertTrue([self date:monthAfter and:arbitraryFutureDate differByYears:0 months:-1
+                       days:0 hours:0 minutes:0 seconds:0], @"");
+}
+
+- (void) testDaysAfter
+{
+    NSDate *daysAfter = [arbitraryPastDate daysAfter:29];
+    STAssertTrue([self date:daysAfter and:arbitraryPastDate differByYears:0 months:0
+                       days:-29 hours:0 minutes:0 seconds:0], @"");
+    daysAfter = [now daysAfter:8];
+    STAssertTrue([self date:daysAfter and:now differByYears:0 months:0
+                       days:-8 hours:0 minutes:0 seconds:0], @"");
+    daysAfter = [arbitraryFutureDate daysAfter:0];
+    STAssertTrue([self date:daysAfter and:arbitraryFutureDate differByYears:0 months:0
+                       days:0 hours:0 minutes:0 seconds:0], @"");
+    STAssertThrows([now daysAfter:-1], @"");
+}
+
+- (void) testDayAfter
+{
+    NSDate *dayAfter = [arbitraryPastDate dayAfter];
+    STAssertTrue([self date:dayAfter and:arbitraryPastDate differByYears:0 months:0
+                       days:-1 hours:0 minutes:0 seconds:0], @"");
+    dayAfter = [now dayAfter];
+    STAssertTrue([self date:dayAfter and:now differByYears:0 months:0
+                       days:-1 hours:0 minutes:0 seconds:0], @"");
+    dayAfter = [arbitraryFutureDate dayAfter];
+    STAssertTrue([self date:dayAfter and:arbitraryFutureDate differByYears:0 months:0
+                       days:-1 hours:0 minutes:0 seconds:0], @"");
+}
 @end

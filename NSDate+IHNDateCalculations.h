@@ -11,4 +11,11 @@
 - (NSDate *) daysAgo:(NSInteger)days;
 - (NSDate *) dayAgo;
 
+
+- (NSDate *) monthsAfter:(NSInteger)months;
+- (NSDate *) monthAfter;
+
+- (NSDate *) daysAfter:(NSInteger)days;
+- (NSDate *) dayAfter;
+
 @end
