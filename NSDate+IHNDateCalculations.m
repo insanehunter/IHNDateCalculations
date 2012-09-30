@@ -9,6 +9,32 @@
 
 @implementation NSDate (IHNDateCalculations)
 
+#pragma mark - Comparison
+- (BOOL) isEarlierThan:(NSDate *)anotherDate
+{
+    NSParameterAssert(anotherDate != nil);
+    return [self compare:anotherDate] == NSOrderedAscending;
+}
+
+- (BOOL) isEqualOrEarlierThan:(NSDate *)anotherDate
+{
+    NSParameterAssert(anotherDate != nil);
+    return [self compare:anotherDate] != NSOrderedDescending;
+}
+
+- (BOOL) isLaterThan:(NSDate *)anotherDate
+{
+    NSParameterAssert(anotherDate != nil);
+    return [self compare:anotherDate] == NSOrderedDescending;
+}
+
+- (BOOL) isEqualOrLaterThan:(NSDate *)anotherDate
+{
+    NSParameterAssert(anotherDate != nil);
+    return [self compare:anotherDate] != NSOrderedAscending;
+}
+
+
 #pragma mark - Before
 - (NSDate *) monthsAgo:(NSInteger)months
 {

@@ -59,6 +59,29 @@
                        days:-27 hours:-9 minutes:-22 seconds:-36], @"");
 }
 
+- (void) testComparison
+{
+    STAssertTrue([now isEarlierThan:arbitraryFutureDate], @"");
+    STAssertTrue([arbitraryPastDate isEarlierThan:now], @"");
+    STAssertTrue([arbitraryPastDate isEarlierThan:arbitraryFutureDate], @"");
+    STAssertTrue([now isEqualOrEarlierThan:arbitraryFutureDate], @"");
+    STAssertTrue([arbitraryPastDate isEqualOrEarlierThan:now], @"");
+    STAssertTrue([arbitraryPastDate isEqualOrEarlierThan:arbitraryFutureDate], @"");
+    STAssertTrue([now isEqualOrEarlierThan:now], @"");
+    STAssertFalse([now isEarlierThan:now], @"");
+    STAssertFalse([arbitraryFutureDate isEarlierThan:now], @"");
+    
+    STAssertTrue([arbitraryFutureDate isLaterThan:now], @"");
+    STAssertTrue([now isLaterThan:arbitraryPastDate], @"");
+    STAssertTrue([arbitraryFutureDate isLaterThan:arbitraryPastDate], @"");
+    STAssertTrue([arbitraryFutureDate isEqualOrLaterThan:now], @"");
+    STAssertTrue([now isEqualOrLaterThan:arbitraryPastDate], @"");
+    STAssertTrue([arbitraryFutureDate isEqualOrLaterThan:arbitraryPastDate], @"");
+    STAssertTrue([now isEqualOrLaterThan:now], @"");
+    STAssertFalse([now isLaterThan:now], @"");
+    STAssertFalse([arbitraryPastDate isLaterThan:now], @"");
+}
+
 - (void) testMothsAgo
 {
     NSDate *monthsAgo = [arbitraryPastDate monthsAgo:2];
